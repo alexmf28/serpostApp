@@ -32,7 +32,7 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
 
     GoogleSignin.configure({
         scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile       
-        webClientId: process.env.WEB_CLIENTID, // client ID of type WEB for your server (needed to verify user ID and offline access)
+        webClientId: process.env.EXPO_PUBLIC_WEB_CLIENTID, // client ID of type WEB for your server (needed to verify user ID and offline access)
     });
 
     const emailTextInput = React.createRef();
@@ -202,12 +202,13 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
                                 await GoogleSignin.hasPlayServices();
                                 const userInfo = await GoogleSignin.signIn();
                                 console.log(JSON.stringify(userInfo, null, 2))
-                                console.log(userInfo.idToken)
+                                console.log('idtoken')
+                                console.log(userInfo.idToken)                             
                                 if (userInfo.idToken) {
                                     const { data, error } = await supabase.auth.signInWithIdToken({
                                         'provider': 'google',
                                         'token': userInfo.idToken
-                                    });
+                                    });                               
                                     setGoogleAccessToken(userInfo.idToken)
                                     console.log(error, data)
                                     navigation.dispatch(

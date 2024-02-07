@@ -7,7 +7,7 @@ import {supabase } from '../utils/supabase'
   export default function Auth() {
     GoogleSignin.configure({  
         scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile       
-        webClientId: process.env.WEB_CLIENTID, // client ID of type WEB for your server (needed to verify user ID and offline access)
+        webClientId: process.env.EXPO_PUBLIC_WEB_CLIENTID, // client ID of type WEB for your server (needed to verify user ID and offline access)
       });
       return(
         <GoogleSigninButton    
