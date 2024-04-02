@@ -102,14 +102,14 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
             //       getFcmToken(result.idRider)
             //     }
             // })
-            // navigation.dispatch(
-            //     CommonActions.reset({
-            //         index: 0,
-            //         routes: [
-            //         { name: 'Home' }
-            //         ],
-            //     })
-            // );
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [
+                    { name: 'User' }
+                    ],
+                })
+            );
         } catch (error) {
             console.log("Entré al catch", error);
         }

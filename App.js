@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
 // import { Text, View } from "react-native";
@@ -17,15 +17,30 @@ import Profile from "./src/screens/Profile/ProfileScreen";
 // import RecoverPassword from "./src/screens/User/RecoverPassword";
 import User from "./src/screens/User/UserScreen";
 import Offices from "./src/screens/Offices/OfficesScreen";
+import Permissions from "./src/screens/Permissions/PermissionsScreen";
 // import Welcome from "./src/screens/Welcome";
+import { PermissionsContext, PermissionsProvider } from "./src/context/PermissionsContext";
+import LoadingScreen from "./src/screens/LoadingScreen/LoadingScreen";
+
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 function HomeMenu() {
+  const { permissions } = useContext( PermissionsContext );
+  console.log('FUNCIONA PERMISO')
+  console.log(permissions)
+  if(permissions.locationStatus === 'unavailable'){
+    return <LoadingScreen/>
+  }
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="SignIn" component={SignIn} options={() => ({headerShown: false})}/>
       <Drawer.Screen name="User" component={User} options={() => ({headerShown: false})} />
-      <Drawer.Screen name="Offices" component={Offices} options={() => ({headerShown: false})}/>
+      {
+      ( permissions.locationStatus === 'granted' ) ?
+        <Drawer.Screen name="Offices" component={Offices} options={() => ({headerShown: false})}/>
+        :
+      <Drawer.Screen name="Permissions" component={Permissions} options={() => ({headerShown: false})}/>
+      }
       <Drawer.Screen name="Profile" component={Profile} options={() => ({headerShown: false})}/>
     </Drawer.Navigator>
   );
@@ -66,9 +81,18 @@ function ProfileStack() {
   )
 }
 
+const AppState = ({ children }) => {
+return (
+  <PermissionsProvider>
+    { children }
+  </PermissionsProvider>
+)
+}
+
 const App = () => {
   return (
     <NativeBaseProvider>
+      <AppState>
       <NavigationContainer>
         <Stack.Navigator>
           {/* { <Stack.Screen name="ProfileStack" component={ProfileStack} options={() => ({headerShown: false,})}/>} */}
@@ -78,6 +102,7 @@ const App = () => {
           {/*<Stack.Screen name="ProfileStack" component={ProfileStack} options={() => ({headerShown: false,})}/>*/}
         </Stack.Navigator>
       </NavigationContainer>
+      </AppState>     
     </NativeBaseProvider>
   );
 };

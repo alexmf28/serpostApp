@@ -16,15 +16,10 @@ function OfficesScreen({navigation}) {
     console.log('OfficesScreen')
     return(
       <View style={styles.container}>
-          <MapView
-        style={{ flex: 1 }}
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      />
+           <TouchableOpacity style={{position: 'absolute', left: 15, top: 10, height: 25, width: 25}} onPress={()=>{navigation.toggleDrawer()}}>
+              <Image source={require('../../assets/icons/icon-menu.png')} style={{height: 25, width: 25}} />
+            </TouchableOpacity>
+         <Text>office Screen</Text>
       </View>
     )
 }
