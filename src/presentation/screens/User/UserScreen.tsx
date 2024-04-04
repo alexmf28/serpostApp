@@ -9,7 +9,7 @@ import {
   Image,
   StyleSheet,
   ScrollView } from 'react-native';
-  import { supabase } from '../../../utils/supabase'
+  import { supabase } from '../../../../utils/supabase'
 
 const User = ({ navigation }) => {
   console.log('user')
@@ -17,7 +17,7 @@ const User = ({ navigation }) => {
     <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity style={{position: 'absolute', left: 15, top: 10, height: 25, width: 25}} onPress={()=>{navigation.toggleDrawer()}}>
-            <Image source={require('../../assets/icons/icon-menu.png')} style={{height: 25, width: 25}} />
+            <Image source={require('../../../assets/icons/icon-menu.png')} style={{height: 25, width: 25}} />
           </TouchableOpacity>
         </View>
         <View style={styles.header}>
@@ -33,7 +33,7 @@ const User = ({ navigation }) => {
                       }
                     }}>
                     <Image
-                        source={require('../../assets/icon-back-button.png')}
+                        source={require('../../../assets/icons/icon-back-button.png')}
                         style={styles.returnIcon}
                         />
                     </TouchableOpacity>

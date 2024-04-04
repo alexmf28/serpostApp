@@ -9,7 +9,7 @@ function LoadingScreen() {
         alignItems: 'center'
     }}>
         <ActivityIndicator
-            size={50}
+            size={40}
             color="black"/>
     </View>
   )

@@ -18,9 +18,8 @@ import {
     GoogleSignin,
     statusCodes,
 } from '@react-native-google-signin/google-signin';
-import { supabase } from '../../../utils/supabase'
+import { supabase } from '../../../../utils/supabase'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Navigator } from '../Navigator/Navigator';
 
 interface SignInProps {
     navigation: any;
@@ -106,7 +105,7 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
                 CommonActions.reset({
                     index: 0,
                     routes: [
-                    { name: 'User' }
+                    { name: 'UserScreen' }
                     ],
                 })
             );
@@ -139,12 +138,12 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
                     }
                     }>
                         <Image
-                            source={require('../../assets/icon-back-button.png')}
+                            source={require('../../../assets/icons/icon-back-button.png')}
                             style={styles.returnIcon}
                         />                      
                     </TouchableOpacity>
                     <Image
-                            source={require('../../assets/icons/icon-serpost.png')}
+                            source={require('../../../assets/icons/icon-serpost.png')}
                             style={styles.serpostLogoIcon}
                         />
                 </View>
@@ -197,13 +196,9 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
                         </View>
                         <CustomButton id={1} style={styles.actionButtonFacebook} label='Continuar con Facebook' action={() => { signIn('Facebook') }} />
                         <CustomButton id={2} style={styles.actionButtonGoogle} label='Continuar con Google' action={async () => {
-                            try {
-                                console.log('entro')
+                            try {                           
                                 await GoogleSignin.hasPlayServices();
-                                const userInfo = await GoogleSignin.signIn();
-                                console.log(JSON.stringify(userInfo, null, 2))
-                                console.log('idtoken')
-                                console.log(userInfo.idToken)                             
+                                const userInfo = await GoogleSignin.signIn();                                                       
                                 if (userInfo.idToken) {
                                     const { data, error } = await supabase.auth.signInWithIdToken({
                                         'provider': 'google',
@@ -215,7 +210,7 @@ const SignIn: React.FC<SignInProps> = ({ navigation: navigation }) => {
                                         CommonActions.reset({
                                             index: 0,
                                             routes: [
-                                                { name: 'User' }
+                                                { name: 'UserScreen' }
                                             ],
                                         })
                                     );

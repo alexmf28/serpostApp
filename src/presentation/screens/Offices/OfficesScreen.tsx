@@ -9,7 +9,7 @@ import {
   Image,
   StyleSheet,
   ScrollView } from 'react-native';
-  import { supabase } from '../../../utils/supabase'
+  import { supabase } from '../../../../utils/supabase'
   import MapView from 'react-native-maps';
 
 function OfficesScreen({navigation}) {
@@ -17,7 +17,7 @@ function OfficesScreen({navigation}) {
     return(
       <View style={styles.container}>
            <TouchableOpacity style={{position: 'absolute', left: 15, top: 10, height: 25, width: 25}} onPress={()=>{navigation.toggleDrawer()}}>
-              <Image source={require('../../assets/icons/icon-menu.png')} style={{height: 25, width: 25}} />
+              <Image source={require('../../../assets/icons/icon-menu.png')} style={{height: 25, width: 25}} />
             </TouchableOpacity>
          <Text>office Screen</Text>
       </View>
