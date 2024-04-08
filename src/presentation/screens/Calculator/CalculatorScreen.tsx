@@ -37,8 +37,7 @@ function CalculatorScreen({ navigation }) {
                 <View style={styles.user__container}>
                     <Text style={styles.name__text}>Calculadora de tarifas</Text>
                 </View>
-                <View style={styles.avatar__container}>
-                    {/* <Image style={styles.avatar} source={require('../../assets/logo.png')}></Image> */}
+                <View style={styles.avatar__container}>                  
                 </View>
             </View>
             <View>
