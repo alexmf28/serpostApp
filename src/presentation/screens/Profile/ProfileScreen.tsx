@@ -10,8 +10,27 @@ import {
   StyleSheet,
   ScrollView } from 'react-native';
   import { supabase } from '../../../../utils/supabase'
+import Section from '../../components/section/CustomSection';
 
 function ProfileScreen({navigation}) {
+  const personalDataOptions = [
+    { text: 'Nombres', onPress: () => { } },
+    { text: 'Apellidos', onPress: () => { } },
+    { text: 'Fecha de Nacimiento', onPress: () => { } },
+    { text: 'Género', onPress: () => { } },
+    { text: 'Tipo de Documento', onPress: () => { } },
+    { text: 'Número de Documento', onPress: () => { } },
+];
+
+const contactDataOptions = [
+    { text: 'Teléfono', onPress: () => { } },
+    { text: 'Departamento', onPress: () => { } },
+    { text: 'Provincia', onPress: () => { } },
+    { text: 'Distrito', onPress: () => { } },
+    { text: 'Dirección domiciliaria', onPress: () => { } },
+    { text: 'Dirección de trabajo', onPress: () => { } },
+    { text: 'Email', onPress: () => { } },
+];
     console.log('ProfileScreen')
     return(
       <View style={styles.container}>
@@ -48,58 +67,19 @@ function ProfileScreen({navigation}) {
           </View>
         </View>
         <View style={styles.body__container}>
-        <Text style={styles.name__text}>Datos Personales</Text>
-          <View style={styles.options__container}>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Nombres</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Apellidos</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Fecha de Nacimiento</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Género</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Tipo de Documento</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Numero de Documento</Text>
-            </TouchableOpacity>       
-          </View>
-          <Text style={styles.name__text}>Datos de contacto</Text>
-          <View style={styles.options__container}>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Teléfono</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Departamento</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Provincia</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Distrito</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Dirección domiciliaria</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>Dirección de trabajo</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option__button}>
-              <Text style={styles.option__text}>email</Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity style={styles.profile__button} onPress={async() => navigation.navigate('Profile')}>
-            <Text style={styles.profile__text}>EDITAR PERFIL</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.drive__button} onPress={async()=>navigation.navigate('Offices')}>
-            <Text style={styles.drive__text}>Oficinas Cercanas</Text>
-          </TouchableOpacity>
-        </View>
+                <Section title="Datos Personales" options={personalDataOptions} />
+                <Section title="Datos de Contacto" options={contactDataOptions} />
+                <TouchableOpacity
+                    style={styles.profile__button}
+                    onPress={() => navigation.navigate('Profile')}>
+                    <Text style={styles.profile__text}>EDITAR PERFIL</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.drive__button}
+                    onPress={() => navigation.navigate('Offices')}>
+                    <Text style={styles.drive__text}>Oficinas Cercanas</Text>
+                </TouchableOpacity>
+            </View>
       </View>
     )
 }

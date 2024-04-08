@@ -7,6 +7,8 @@ import OfficesScreen from "../screens/Offices/OfficesScreen";
 import SignInScreen from "../screens/SignInScreen/SignInScreen";
 import UserScreen from "../screens/User/UserScreen";
 import ProfileScreen from "../screens/Profile/ProfileScreen";
+import CalculatorScreen from "../screens/Calculator/CalculatorScreen";
+
 export type RootStackParams = {
    HomeMenu: undefined;
    LoadingScreen: undefined;
@@ -26,6 +28,7 @@ export const StackNavigator= ()=> {
           <Drawer.Screen name="PermissionsScreen" component={PermissionsScreen} options={() => ({headerShown: false})}/>          
           <Drawer.Screen name="MapScreen" component={MapScreen} options={() => ({headerShown: false})}/>
           <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={() => ({headerShown: false})}/>
+          <Drawer.Screen name="CalculatorScreen" component={CalculatorScreen} options={() => ({headerShown: false})}/>
         </Drawer.Navigator>
       );
     }

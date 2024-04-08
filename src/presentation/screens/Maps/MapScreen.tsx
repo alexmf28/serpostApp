@@ -1,37 +1,27 @@
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'; 
-import React from 'react'
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import Map from '../../components/maps/Map';
 //AGREGAR ID DEL PAQUETE EN LAS RESTRICCIONES DE MAPS DE GCP antes de desplegarlo
-function MapScreen() {
+function MapScreen({navigation}) {
   return (
     <View style={styles.container}>
-    <MapView
-      provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-      style={styles.map}
-      region={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
-      }}
-    >
-    </MapView>
+            <View style={styles.header}>
+            <TouchableOpacity style={{position: 'absolute', left: 15, top: 10, height: 25, width: 25}} onPress={()=>{navigation.toggleDrawer()}}>
+              <Image source={require('../../../assets/icons/icon-menu.png')} style={{height: 25, width: 25}} />
+            </TouchableOpacity>
+          </View>
+      <Map />
   </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
-    height: 400,
-    width: 400,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    ...StyleSheet.absoluteFillObject,  
   },
-  map: {
-    ...StyleSheet.absoluteFillObject,
+  header:{
+    flexDirection: 'row',
+    height: 50,
   },
  });
-
 export default MapScreen
 

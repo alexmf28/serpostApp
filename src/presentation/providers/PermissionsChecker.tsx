@@ -19,7 +19,7 @@ export const PermissionsChecker = ({ children }: PropsWithChildren) => {
             if (locationStatus === 'granted') {
                 console.log('redirige a map')
                 navigation.reset({
-                    routes: [{ name: 'MapScreen' }],
+                    routes: [{ name: 'HomeMenu' }],
                 })
             }
             else if (locationStatus !== 'undetermined') {
